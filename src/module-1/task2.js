@@ -7,5 +7,7 @@ const writeText = fs.createWriteStream(
 );
 fs.createReadStream(path.resolve(__dirname, "./files/csv/file.csv"))
   .pipe(csv())
-  .on("data", (data) => writeText.write(data))
+  .on("data", function (data) {
+    writeText.write(data);
+  })
   .on("error", console.log);
